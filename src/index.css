@@ -1,0 +1,271 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    /* Soft Sage & Cream Baby Healthcare Theme */
+    --background: 40 30% 96%;
+    --foreground: 150 15% 25%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 150 15% 25%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 150 15% 25%;
+
+    /* Sage Green - Primary */
+    --primary: 90 20% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Light Sage - Secondary */
+    --secondary: 90 25% 75%;
+    --secondary-foreground: 90 20% 30%;
+
+    /* Soft Blue - Accent */
+    --accent: 200 40% 85%;
+    --accent-foreground: 200 30% 35%;
+
+    /* Cream/Tan - Warning/Highlight */
+    --warning: 35 40% 85%;
+    --warning-foreground: 35 30% 35%;
+
+    /* Soft Peach */
+    --peach: 25 60% 88%;
+    --peach-foreground: 25 40% 35%;
+
+    /* Soft Mint */
+    --mint: 160 35% 85%;
+    --mint-foreground: 160 30% 35%;
+
+    /* Status Colors */
+    --success: 90 30% 70%;
+    --success-foreground: 90 25% 25%;
+    
+    --pending: 35 50% 80%;
+    --pending-foreground: 35 40% 30%;
+
+    --muted: 40 20% 92%;
+    --muted-foreground: 150 10% 45%;
+
+    --destructive: 0 55% 70%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 40 20% 88%;
+    --input: 40 20% 90%;
+    --ring: 90 20% 45%;
+
+    --radius: 1.25rem;
+
+    /* Gradients - Sage to Teal Transition */
+    --gradient-primary: linear-gradient(180deg, hsl(120, 18%, 55%) 0%, hsl(170, 25%, 60%) 100%);
+    --gradient-secondary: linear-gradient(180deg, hsl(90, 25%, 75%) 0%, hsl(90, 20%, 82%) 100%);
+    --gradient-accent: linear-gradient(180deg, hsl(200, 45%, 80%) 0%, hsl(200, 35%, 88%) 100%);
+    --gradient-warm: linear-gradient(180deg, hsl(35, 40%, 92%) 0%, hsl(40, 30%, 95%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(120, 18%, 55%) 0%, hsl(170, 30%, 58%) 100%);
+    --gradient-sky: linear-gradient(180deg, hsl(200, 45%, 80%) 0%, hsl(190, 35%, 88%) 100%);
+
+    /* Shadows - Softer */
+    --shadow-soft: 0 4px 20px -4px hsl(90 20% 45% / 0.12);
+    --shadow-card: 0 2px 16px -2px hsl(40 20% 30% / 0.06);
+    --shadow-hover: 0 8px 30px -6px hsl(90 20% 45% / 0.18);
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 150 15% 25%;
+    --sidebar-primary: 90 20% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 40 20% 94%;
+    --sidebar-accent-foreground: 150 15% 25%;
+    --sidebar-border: 40 20% 88%;
+    --sidebar-ring: 90 20% 45%;
+  }
+
+  .dark {
+    --background: 150 15% 10%;
+    --foreground: 40 20% 92%;
+
+    --card: 150 12% 14%;
+    --card-foreground: 40 20% 92%;
+
+    --popover: 150 12% 14%;
+    --popover-foreground: 40 20% 92%;
+
+    --primary: 90 25% 50%;
+    --primary-foreground: 150 15% 10%;
+
+    --secondary: 90 20% 22%;
+    --secondary-foreground: 90 30% 85%;
+
+    --accent: 200 30% 25%;
+    --accent-foreground: 200 35% 90%;
+
+    --warning: 35 30% 22%;
+    --warning-foreground: 35 45% 88%;
+
+    --peach: 25 40% 22%;
+    --peach-foreground: 25 50% 88%;
+
+    --mint: 160 25% 22%;
+    --mint-foreground: 160 35% 88%;
+
+    --success: 90 25% 25%;
+    --success-foreground: 90 35% 88%;
+    
+    --pending: 35 35% 22%;
+    --pending-foreground: 35 50% 88%;
+
+    --muted: 150 12% 18%;
+    --muted-foreground: 150 10% 55%;
+
+    --destructive: 0 45% 40%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 150 12% 20%;
+    --input: 150 12% 20%;
+    --ring: 90 25% 50%;
+
+    --sidebar-background: 150 12% 12%;
+    --sidebar-foreground: 40 20% 92%;
+    --sidebar-primary: 90 25% 50%;
+    --sidebar-primary-foreground: 150 15% 10%;
+    --sidebar-accent: 150 12% 18%;
+    --sidebar-accent-foreground: 40 20% 92%;
+    --sidebar-border: 150 12% 20%;
+    --sidebar-ring: 90 25% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-nunito antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  .gradient-warm {
+    background: var(--gradient-warm);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-sky {
+    background: var(--gradient-sky);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-hover {
+    box-shadow: var(--shadow-hover);
+  }
+
+  .card-interactive {
+    @apply transition-all duration-300 hover:shadow-hover hover:-translate-y-1;
+  }
+
+  .status-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .status-pending {
+    @apply bg-pending text-pending-foreground;
+  }
+
+  .status-completed {
+    @apply bg-success text-success-foreground;
+  }
+
+  .status-rejected {
+    @apply bg-destructive/20 text-destructive;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200;
+  }
+
+  .nav-item-active {
+    @apply bg-primary text-primary-foreground shadow-soft;
+  }
+
+  .nav-item-inactive {
+    @apply text-muted-foreground hover:bg-muted hover:text-foreground;
+  }
+
+  /* Glassmorphism cards */
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-sm border border-white/50;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2s ease-in-out infinite;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.5s ease-out;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.4s ease-out;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  @keyframes slide-up {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
