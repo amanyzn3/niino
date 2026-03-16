@@ -1,5 +1,5 @@
 // Use proxy in development, or direct URL if specified
-const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? '/api' : 'http://localhost:3000/api');
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
 // Helper function to get auth token
 const getAuthToken = () => {
@@ -41,7 +41,7 @@ const apiRequest = async (endpoint: string, options: RequestInit = {}) => {
   } catch (error: any) {
     // Handle network errors
     if (error.name === 'TypeError' && error.message.includes('fetch')) {
-      throw new Error('Cannot connect to server. Please make sure the backend server is running on port 3000.');
+      throw new Error('Cannot connect to server. Please make sure the backend server is running and accessible.');
     }
     throw error;
   }
