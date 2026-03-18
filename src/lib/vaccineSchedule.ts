@@ -42,6 +42,11 @@ export const calculateSchedule = async (baby: any, existingVaccines: any[]) => {
     if (!baby.dateOfBirth) return [];
 
     const birthDate = new Date(baby.dateOfBirth);
+    if (isNaN(birthDate.getTime())) {
+        console.error("Invalid baby date of birth provided to scheduler:", baby.dateOfBirth);
+        return [];
+    }
+    const existingVaccinesSafe = Array.isArray(existingVaccines) ? existingVaccines : [];
     let allVaccines: any[] = [];
 
     // Get schedule dynamically
@@ -50,7 +55,7 @@ export const calculateSchedule = async (baby: any, existingVaccines: any[]) => {
     schedule.forEach((period: any) => {
         period.vaccines.forEach((vName: string) => {
             // Check if exists in DB
-            const existing = existingVaccines.find((v: any) => v.name === vName);
+            const existing = existingVaccinesSafe.find((v: any) => v.name === vName);
 
             if (existing) {
                 allVaccines.push({ ...existing, ageCategory: period.age });
@@ -65,7 +70,7 @@ export const calculateSchedule = async (baby: any, existingVaccines: any[]) => {
                 allVaccines.push({
                     _id: `temp-${vName}-${period.age}`, // Temp ID
                     name: vName,
-                    dueDate: dueDate.toISOString(),
+                    dueDate: isNaN(dueDate.getTime()) ? new Date().toISOString() : dueDate.toISOString(),
                     status: status,
                     ageCategory: period.age,
                     isPredicted: true
@@ -75,7 +80,7 @@ export const calculateSchedule = async (baby: any, existingVaccines: any[]) => {
     });
 
     // Add any custom vaccines not in standard schedule
-    existingVaccines.forEach((v: any) => {
+    existingVaccinesSafe.forEach((v: any) => {
         if (!allVaccines.some(av => (av._id === v._id) || (av.name === v.name && !av.isPredicted))) {
             allVaccines.push({ ...v, ageCategory: "Custom" });
         }

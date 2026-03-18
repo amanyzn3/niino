@@ -168,7 +168,7 @@ const ParentDashboard = () => {
       // Check for upcoming vaccines for Alert
       const currentBaby = babies.find(b => b._id === babyId);
       if (currentBaby) {
-        const allVaccines = calculateSchedule(currentBaby, vax);
+        const allVaccines = await calculateSchedule(currentBaby, vax);
         const today = new Date();
         const nextWeek = new Date();
         nextWeek.setDate(today.getDate() + 7);
@@ -213,7 +213,7 @@ const ParentDashboard = () => {
 
     } catch (e: any) {
       console.error(e);
-      toast.error("Failed to load baby data");
+      toast.error(`Failed to load baby data: ${e.message || "Unknown error"}`);
     }
   };
 

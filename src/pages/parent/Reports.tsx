@@ -73,7 +73,7 @@ const Reports = () => {
         const currentBaby = babiesData.find((b: any) => b._id === currentId);
         if (currentBaby) {
           const vax = await vaccinationAPI.getAll(currentId);
-          const allVaccines = calculateSchedule(currentBaby, vax);
+          const allVaccines = await calculateSchedule(currentBaby, vax);
           const today = new Date();
           const nextWeek = new Date();
           nextWeek.setDate(today.getDate() + 7);
@@ -135,8 +135,8 @@ const Reports = () => {
       const data = await reportAPI.getSummary(selectedBabyId);
       setSummaryData(data);
       setSummaryOpen(true);
-    } catch (e) {
-      toast.error("Failed to generate summary");
+    } catch (e: any) {
+      toast.error(`Failed to generate summary: ${e.message || "Unknown error"}`);
     } finally {
       setGenerating(false);
     }

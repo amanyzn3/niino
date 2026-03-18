@@ -87,7 +87,7 @@ const Vaccination = () => {
         }
       }
     } catch (error: any) {
-      toast.error("Failed to load data");
+      toast.error(`Failed to load data: ${error.message || "Unknown error"}`);
     }
   };
 
