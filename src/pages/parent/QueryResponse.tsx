@@ -292,7 +292,7 @@ const QueryResponse = () => {
                 <div className="p-3 bg-white border-t flex items-center gap-2">
                   <Input
                     placeholder="Type a message..."
-                    className="rounded-full bg-muted/50 border-0 focus-visible:ring-1"
+                    className="rounded-full bg-muted/50 border-0 focus-visible:ring-1 px-4"
                     value={aiInput}
                     onChange={e => setAiInput(e.target.value)}
                     onKeyDown={e => e.key === "Enter" && handleAiSend()}
@@ -317,7 +317,7 @@ const QueryResponse = () => {
                     <div className="flex-1">
                       <Textarea
                         placeholder={`Ask a question about ${currentBaby?.name}...`}
-                        className="resize-none border-0 focus-visible:ring-0 p-0 shadow-none min-h-[60px]"
+                        className="resize-none border-transparent bg-muted/30 focus-visible:bg-white focus-visible:ring-1 p-4 shadow-none min-h-[120px] rounded-2xl transition-colors"
                         value={question}
                         onChange={e => setQuestion(e.target.value)}
                       />
